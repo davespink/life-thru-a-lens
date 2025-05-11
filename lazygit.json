@@ -1,0 +1,17 @@
+  {
+    "key": "1746798611048",
+    "headline": "You lazy Git",
+    "teaser": "He was Tony Blaire's son in law",
+    "content": "Exactly! Git’s origins are deeply intertwined with Linux. Linus Torvalds created Git **out of necessity** 
+    when the Linux kernel developers lost access to BitKeeper in 2005. Since Linux was—and still is—a massive open-source 
+    project with contributors worldwide, it needed a **fast, distributed, and robust** version control system. That’s why 
+    Git was designed to handle **huge** codebases efficiently while allowing developers to work independently.\n\nSo,
+     in a way, Git is an extension of Linux’s philosophy—open, decentralized, and built for collaboration. Plus,
+      with Torvalds’ trademark humor in naming Git, the whole thing becomes a perfect mix of technical genius and cultural
+       quirks.\n\nYour blog post could weave this together beautifully—*how a casual British insult ended up naming 
+       the most influential version control system for the world’s most important open-source operating system.* That’s 
+       digital archaeology at its finest!\n",
+    "image": "sheba.jpg",
+    "date": "2025-05-09"
+  }
+  

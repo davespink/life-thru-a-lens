@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  <title>People's parliament</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    :root {
+      --primary-color: #e7e5c9;
+      /* Define a custom color */
+      --secondary-color: hsl(56, 23%, 71%);
+    }
+
+
+
+
+
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      font-size: 60px;
+    }
+
+    body {
+      background-color: var(--primary-color);
+      /* Use the custom color */
+      margin: 0;
+      padding: 0;
+    }
+
+
+    table,
+    th,
+    td {
+      border: 2px solid black;
+      padding: 0px;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    td:nth-child(2),
+    th:nth-child(2),
+    td:nth-child(3),
+    th:nth-child(3) {
+      padding: 2px;
+    }
+
+    td:nth-child(3),
+    th:nth-child(3) {
+      padding: 2px;
+      text-align: center;
+    }
+
+
+    #middle-column {
+      /* Adjust height as needed */
+      background-color: var(--primary-color);
+      height: 700px;
+      padding: 0px;
+      overflow-y: auto;
+      /* Enable vertical scrolling */
+    }
+
+
+    .post-header {
+      height: 280px;
+      background-color: #f1f1f1;
+      border-radius: 20px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .post-container {
+
+      overflow-y: auto;
+      /* Enable vertical scrolling */
+      font-size: 18px;
+      /* Adjust font size as needed */
+
+      width: 100%
+    }
+
+    .input-form {
+      display: none;
+      /* Hide the form initially */
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .alert {
+      position: fixed;
+      display: none;
+      top: 20%;
+      /* Center vertically */
+      left: 50%;
+      /* Center horizontally */
+      transform: translate(-50%, -50%);
+      /* Adjust for the element's size */
+      background-color: beige;
+      /* Red background */
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      font-size: larger;
+      color: black;
+      text-align: center;
+      /* Center the text inside the alert */
+      width: 300px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      /* Optional: Set a fixed width */
+      transition: opacity 2.0s ease-in-out;
+    }
+
+    .alert-success {
+      background-color: beige;
+      /* Green */
+    }
+
+    .alert-warning {
+      background-color: #ff9800;
+      /* Orange */
+    }
+
+    .alert-error {
+      background-color: #f44336;
+      /* Red */
+    }
+  </style>
+
+  <script src="content.js"></script>
+
+  <script src="../simple-static/libjs/blogging-1.0.js"></script>
+
+  <script>
+    const readOnly = false;
+    const onePost = true; // Set to true to show only one post at a time
+
+
+    //alert(getVersion());
+
+
+
+    window.onload = function () {
+      renderPosts();
+      generateSideMenu();
+
+      if (onePost) {
+        const postContainer = document.querySelector('.post-container');
+        const posts = postContainer.querySelectorAll('.post');
+        posts[0].style.display = 'block'; // Show only the first post
+      //  posts[0].scrollIntoView({ behavior: 'smooth' });
+
+        // Add a slight nudge after scrolling
+      //  setTimeout(() => {
+      //    window.scrollBy(0, -100); // Adjust the offset as needed (negative value scrolls up)
+      //  }, 500); // Delay to ensure smooth scrolling completes
+
+
+      }
+
+
+    };
+
+
+  </script>
+</head>
+
+<body class="w3-theme-l5">
+
+  <div id="custom-alert" class="alert" onclick="document.getElementById('custom-alert').style.display='none'">
+    <span id="alert-message"></span>
+
+  </div>
+
+
+  <!-- Page Container -->
+  <div class="w3-container w3-content"
+    style="max-width:1400px;margin-top:10px;padding:0px;background-color: var(--primary-color)">
+    <!-- The Grid -->
+    <div class="w3-row" style="padding:0px">
+
+
+
+      <!-- Left Column -->
+      <div id="left-column" class="w3-col m2" style="background-color: var(--secondary-color)">
+        <!-- Profile -->
+        <div class="w3-card w3-round">
+          <div class="w3-container">
+            <h4 class="w3-center">v1.12a - 11 may 2025</h4>
+            <p class="w3-center"><img src="images/book.jpg" class="w3-circle" style="height:150px;width:150px"
+                alt="Profile picture"></p>
+            <hr>
+
+            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
+            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 2, 2025</p>
+          </div>
+        </div>
+        <br>
+
+
+        <br>
+
+
+
+      </div>
+
+      <!-- Middle Column -->
+      <div id="middle-column" class="w3-col m7">
+        <div>
+          <div class="w3-col m12" style="padding:0px;margin-left:0px;margin-right:0px;">
+            <div class="w3-card w3-round">
+              <div class="w3-container">
+
+
+                <div class="w3-container w3-card   w3-round " style="margin-bottom:10px;padding:0px">
+                  <br>
+                  <div class="w3-container w3-sans-serif post-container">
+
+                    <header>
+                      <img src="images/parliament.png" alt="palace of westminster" class="w3-center" style="width:100%">
+                    </header>
+                    <div class="w3-container">
+
+                      <h6>It’s been almost 30 years since Channel 4 produced a program called “The Peoples Parliament”,
+                        where ordinary folk got to debate issues of the day. Roll on 2025, and the electorate are
+                        confused,frustrated,
+                        and feel impotent to effect change to the way they are governed. Trapped in a system they cannot
+                        change, and
+                        offered more of the same from the next pack of politicians that they may hopefully elect.
+                        Will they be disappointed yet again? Einstein said the definition of stupidity was doing the
+                        same thing over again and expecting a different result. Maybe it’s we time changed the system
+                        and returned to the true meaning of democracy, rule by the people, not by power greedy
+                        politicians.</h6><br>
+                    </div>
+                  </div>
+
+
+
+                  <div class="w3-container input-form" style="padding: 10px;">
+                    <h3 id="editType">Create New Post</h3>
+                    <form id="new-post-form" class="w3-form">
+                      <label for="post-key">Post Key (unique ID)</label>
+                      <input type="text" id="post-key" class="w3-input w3-margin-bottom" placeholder="e.g., post-123"
+                        required aria-describedby="post-key-error">
+                      <span id="post-key-error" class="w3-text-red" style="display:none;">Key must be unique.</span>
+                      <label for="post-headlinex">Headline</label>
+                      <input type="text" id="post-headlinex" class="w3-input w3-margin-bottom"
+                        placeholder="Post Headline" required>
+                      <label for="post-teaser">Teaser</label>
+                      <input type="text" id="post-teaser" class="w3-input w3-margin-bottom"
+                        placeholder="Short teaser text" required>
+                      <label for="post-content">Content</label>
+                      <textarea id="post-content" class="w3-input w3-margin-bottom"
+                        placeholder="Post content (supports HTML)" rows="5" required></textarea>
+                      <label for="post-imagex">Image (optional)</label>
+                      <input type="file" id="post-imagex" class="w3-input w3-margin-bottom" accept="image/*">
+                      <p id="current-image" class="w3-text-grey">Current Image: None</p>
+                      <label for="post-date">Date (optional, defaults to today)</label>
+                      <input type="date" id="post-date" class="w3-input w3-margin-bottom">
+                      <button type="submit" class="w3-button w3-theme-d2">Save Post</button>
+
+                      <!-- New button to hide the form -->
+                      <button type="button" class="w3-button w3-theme-l4 w3-right" onclick="hideForm()">Cancel</button>
+
+
+                    </form>
+                  </div>
+
+                  <script>
+                    const postKey = document.getElementById("post-key");
+                    //      postKey.value = Date.now();
+                    postKey.readOnly = true; // Make the key read-only
+                    postKey.addEventListener("focus", function () {
+                      this.blur(); // Prevents the user from focusing on the input field
+                    });
+
+                  </script>
+
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div id="right-column" class="w3-col m3" style="background-color: var(--secondary-color)">
+        <div class="w3-card w3-round   w3-center">
+          <div class="w3-container">
+            <div class="w3-card w3-round w3-white w3-center">
+              <div class="w3-container">
+
+                <!-- Add the Create New Post button -->
+                <button class="w3-button w3-theme-d2 w3-margin-top w3-margin-bottom" onclick="renderPosts()">Show All
+                  Posts</button>
+                <button class="w3-button w3-theme-d2 w3-margin-bottom admin" onclick="setupPostForm()">Create New
+                  Post</button>
+                <div id="side-menu" style="overflow:auto;max-height:400px"></div>
+              </div>
+            </div>
+            <p>That's all folks</p>
+
+            <!-- tags-->
+            <div class="w3-card w3-round w3-white w3-hide-small">
+              <div class="w3-container">
+                <p>hashtags</p>
+                <p>
+
+                  <span class="w3-tag w3-small w3-theme-d5">News</span>
+                  <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
+                  <span class="w3-tag w3-small w3-theme-d3">Labels</span>
+                  <span class="w3-tag w3-small w3-theme-d2">Games</span>
+                  <span class="w3-tag w3-small w3-theme-d1">Friends</span>
+                  <span class="w3-tag w3-small w3-theme">Games</span>
+                  <span class="w3-tag w3-small w3-theme-l1">Friends</span>
+                  <span class="w3-tag w3-small w3-theme-l2">Food</span>
+                  <span class="w3-tag w3-small w3-theme-l3">Design</span>
+                  <span class="w3-tag w3-small w3-theme-l4">Art</span>
+                  <span class="w3-tag w3-small w3-theme-l5">Photos</span>
+                </p>
+              </div>
+            </div>
+            <br>
+
+
+
+
+            <div id="side-menu"></div>
+          </div>
+        </div>
+        <br>
+        <div class="w3-card w3-round w3-white w3-center admin">
+
+          <div class="w3-container">
+            <p>Storage Operations</p>
+
+            <div class="w3-card w3-round w3-white w3-center">
+              <div class="w3-container">
+
+                <p><button onclick="CRUD.deleteAllPosts()" class="w3-button w3-block w3-theme-l4">Clear Storage</button>
+                </p>
+                <p><button onclick="downloadPosts()" class="w3-button w3-block w3-theme-l4">Download Posts</button></p>
+                <p><button onclick="uploadPosts()" class="w3-button w3-block w3-theme-l4">Upload Posts</button></p>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+        </div>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="w3-container" style="background-color:orange;padding:0px;text-align: center;">
+
+    <h6 style="color:white">Template by w3.css&nbsp;&nbsp;powered by cloudflare</h6>
+    </p>
+  </footer>
+
+</body>
+
+</html>
