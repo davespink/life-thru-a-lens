@@ -3,7 +3,7 @@
 
 
 <head>
-  <title>People's parliament</title>
+  <title>Life Thru a Lens</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
@@ -12,9 +12,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     :root {
-      --primary-color: #e7e5c9;
+      --primary-color: #181813;
       /* Define a custom color */
-      --secondary-color: hsl(56, 23%, 71%);
+      --secondary-color: hsl(60, 78%, 2%);
+      --text-color: white;
     }
 
 
@@ -30,6 +31,7 @@
     h5 {
       font-family: "Roboto", sans-serif;
       font-weight: 400;
+
     }
 
     h1 {
@@ -37,6 +39,7 @@
     }
 
     body {
+      color: azure;
       background-color: var(--primary-color);
       /* Use the custom color */
       margin: 0;
@@ -75,7 +78,8 @@
       height: 700px;
       padding: 0px;
       overflow-y: auto;
-      /* Enable vertical scrolling */
+      color: var(--text-color);
+        /* Enable vertical scrolling */
     }
 
 
@@ -151,7 +155,7 @@
 
   <script src="content.js"></script>
 
-  <script src="../simple-static/libjs/blogging-1.0.js"></script>
+  <script src="https://simple-static-as5.pages.dev/blogging-1.0.js"></script>
 
   <script>
     const readOnly = false;
@@ -170,12 +174,12 @@
         const postContainer = document.querySelector('.post-container');
         const posts = postContainer.querySelectorAll('.post');
         posts[0].style.display = 'block'; // Show only the first post
-      //  posts[0].scrollIntoView({ behavior: 'smooth' });
+        //  posts[0].scrollIntoView({ behavior: 'smooth' });
 
         // Add a slight nudge after scrolling
-      //  setTimeout(() => {
-      //    window.scrollBy(0, -100); // Adjust the offset as needed (negative value scrolls up)
-      //  }, 500); // Delay to ensure smooth scrolling completes
+        //  setTimeout(() => {
+        //    window.scrollBy(0, -100); // Adjust the offset as needed (negative value scrolls up)
+        //  }, 500); // Delay to ensure smooth scrolling completes
 
 
       }
@@ -204,12 +208,12 @@
 
 
       <!-- Left Column -->
-      <div id="left-column" class="w3-col m2" style="background-color: var(--secondary-color)">
+      <div id="left-column" class="w3-col m2" style="background-color: var(--secondary-color);margin-top: 40px">
         <!-- Profile -->
-        <div class="w3-card w3-round">
+        <div class="w3-card w3-round w3-margin" style="color:var(--text-color)">
           <div class="w3-container">
             <h4 class="w3-center">v1.12a - 11 may 2025</h4>
-            <p class="w3-center"><img src="images/book.jpg" class="w3-circle" style="height:150px;width:150px"
+            <p class="w3-center"><img src="images/life.png" class="w3-circle" style="height:150px;width:150px"
                 alt="Profile picture"></p>
             <hr>
 
@@ -229,36 +233,66 @@
       <!-- Middle Column -->
       <div id="middle-column" class="w3-col m7">
         <div>
-          <div class="w3-col m12" style="padding:0px;margin-left:0px;margin-right:0px;">
+          <div class="w3-col m12" style="padding:0px;margin-left:0px;margin-right:0px">
             <div class="w3-card w3-round">
               <div class="w3-container">
 
 
                 <div class="w3-container w3-card   w3-round " style="margin-bottom:10px;padding:0px">
                   <br>
-                  <div class="w3-container w3-sans-serif post-container">
+                  <div class="w3-container w3-sans-serif post-container" style="color:black;">
 
                     <header>
-                      <img src="images/parliament.png" alt="palace of westminster" class="w3-center" style="width:100%">
+                              <img src="images/banner.png" alt="robbie" 
+                              class="w3-center" style="width:100%; border-radius: 20px;margin-bottom: 20px;"> 
+                 
                     </header>
                     <div class="w3-container">
 
-                      <h6>It’s been almost 30 years since Channel 4 produced a program called “The Peoples Parliament”,
-                        where ordinary folk got to debate issues of the day. Roll on 2025, and the electorate are
-                        confused,frustrated,
-                        and feel impotent to effect change to the way they are governed. Trapped in a system they cannot
-                        change, and
-                        offered more of the same from the next pack of politicians that they may hopefully elect.
-                        Will they be disappointed yet again? Einstein said the definition of stupidity was doing the
-                        same thing over again and expecting a different result. Maybe it’s we time changed the system
-                        and returned to the true meaning of democracy, rule by the people, not by power greedy
-                        politicians.</h6><br>
+                      <h6 style="color:white "> 
+
+
+                 Life Through a Lens
+ 
+
+A recent chat with I can't remember who 
+about the Robbie Williams movie
+"A Better Man" caused me to pick a random
+Robbie track, to listen to.
+ Chance threw me "Life Thru a Lens",
+and though it's not one his more famous efforts,
+there was a nifty tune.
+<p>
+I wondered what it was all about? Fresh from my
+recent bout of cinematic Robbiemania, I looked for some 
+  meaning in the lyrics. It seemed obvious
+this was about fame, publicity, image, 
+photographers, paparazzi.
+<p>
+Maybe Robbie had penned this as he was 
+experiencing the price of fame?
+Who knows? But then something else clicked, and
+it came to me that life is indeed often lived through
+a lens, not literally, but metaphorically.
+ 
+<p>
+ 
+ 
+ 
+
+
+
+
+
+
+
+                      </h6><br>
                     </div>
                   </div>
 
 
 
-                  <div class="w3-container input-form" style="padding: 10px;">
+                  <div class="w3-container input-form" style="padding: 10px">
                     <h3 id="editType">Create New Post</h3>
                     <form id="new-post-form" class="w3-form">
                       <label for="post-key">Post Key (unique ID)</label>
@@ -309,16 +343,16 @@
       </div>
 
       <!-- Right Column -->
-      <div id="right-column" class="w3-col m3" style="background-color: var(--secondary-color)">
+      <div id="right-column" class="w3-col m3" style="background-color: var(--secondary-color);margin-top: 40px;">
         <div class="w3-card w3-round   w3-center">
           <div class="w3-container">
-            <div class="w3-card w3-round w3-white w3-center">
-              <div class="w3-container">
+            <div class="w3-card w3-round w3-white w3-center w3-margin-top">
+              <div class="w3-container" style="padding:10px">
 
                 <!-- Add the Create New Post button -->
-                <button class="w3-button w3-theme-d2 w3-margin-top w3-margin-bottom" onclick="renderPosts()">Show All
+                <button class="w3-button w3-theme-d2   w3-margin-bottom" onclick="renderPosts()"> All
                   Posts</button>
-                <button class="w3-button w3-theme-d2 w3-margin-bottom admin" onclick="setupPostForm()">Create New
+                <button class="w3-button w3-theme-d2 w3-margin-bottom admin" onclick="setupPostForm()"> New
                   Post</button>
                 <div id="side-menu" style="overflow:auto;max-height:400px"></div>
               </div>
