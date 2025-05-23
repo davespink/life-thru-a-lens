@@ -79,7 +79,7 @@
       padding: 0px;
       overflow-y: auto;
       color: var(--text-color);
-        /* Enable vertical scrolling */
+      /* Enable vertical scrolling */
     }
 
 
@@ -154,17 +154,17 @@
   </style>
 
   <script src="content.js"></script>
-
-  <script src="https://simple-static-as5.pages.dev/blogging-1.0.js"></script>
+  <script src="blogging-1.0.js"></script>
 
   <script>
     const readOnly = false;
     const onePost = true; // Set to true to show only one post at a time
 
 
-    //alert(getVersion());
+    let z = document.querySelectorAll('.admin');
 
 
+    var posts;
 
     window.onload = function () {
       renderPosts();
@@ -180,9 +180,20 @@
         //  setTimeout(() => {
         //    window.scrollBy(0, -100); // Adjust the offset as needed (negative value scrolls up)
         //  }, 500); // Delay to ensure smooth scrolling completes
-
-
       }
+
+      
+      document.querySelectorAll('.admin').forEach(function (element)
+      
+      {
+      //  element.style.display = 'none';
+
+
+      });
+
+
+    version.innerHTML = "v1.14 - 22 may 2025 lib " + getVersion();
+
 
 
     };
@@ -212,7 +223,7 @@
         <!-- Profile -->
         <div class="w3-card w3-round w3-margin" style="color:var(--text-color)">
           <div class="w3-container">
-            <h4 class="w3-center">v1.12a - 11 may 2025</h4>
+            <h4 class="w3-center"> <p id="version"></p>  </h4>
             <p class="w3-center"><img src="images/life.png" class="w3-circle" style="height:150px;width:150px"
                 alt="Profile picture"></p>
             <hr>
@@ -243,42 +254,42 @@
                   <div class="w3-container w3-sans-serif post-container" style="color:black;">
 
                     <header>
-                              <img src="images/banner.png" alt="robbie" 
-                              class="w3-center" style="width:100%; border-radius: 20px;margin-bottom: 20px;"> 
-                 
+                      <img src="images/banner.png" alt="robbie" class="w3-center"
+                        style="width:100%; border-radius: 20px;margin-bottom: 20px;">
+
                     </header>
                     <div class="w3-container">
 
-                      <h6 style="color:white "> 
+                      <h6 style="color:white ">
 
 
-                 Life Through a Lens
- 
+                        Life Through a Lens
 
-A recent chat with I can't remember who 
-about the Robbie Williams movie
-"A Better Man" caused me to pick a random
-Robbie track, to listen to.
- Chance threw me "Life Thru a Lens",
-and though it's not one his more famous efforts,
-there was a nifty tune.
-<p>
-I wondered what it was all about? Fresh from my
-recent bout of cinematic Robbiemania, I looked for some 
-  meaning in the lyrics. It seemed obvious
-this was about fame, publicity, image, 
-photographers, paparazzi.
-<p>
-Maybe Robbie had penned this as he was 
-experiencing the price of fame?
-Who knows? But then something else clicked, and
-it came to me that life is indeed often lived through
-a lens, not literally, but metaphorically.
- 
-<p>
- 
- 
- 
+
+                        A recent chat with I can't remember who
+                        about the Robbie Williams movie
+                        "A Better Man" caused me to pick a random
+                        Robbie track, to listen to.
+                        Chance threw me "Life Thru a Lens",
+                        and though it's not one his more famous efforts,
+                        there was a nifty tune.
+                        <p>
+                          I wondered what it was all about? Fresh from my
+                          recent bout of cinematic Robbiemania, I looked for some
+                          meaning in the lyrics. It seemed obvious
+                          this was about fame, publicity, image,
+                          photographers, paparazzi.
+                        <p>
+                          Maybe Robbie had penned this as he was
+                          experiencing the price of fame?
+                          Who knows? But then something else clicked, and
+                          it came to me that life is indeed often lived through
+                          a lens, not literally, but metaphorically.
+
+                        <p>
+
+
+
 
 
 
