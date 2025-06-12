@@ -26,7 +26,7 @@ Move over to a templated version so that I don't need to deal with creating the 
 
 
 <head>
-  <title>Blogging For Fun</title>
+  <title>Life Thru a Lens</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
@@ -35,8 +35,8 @@ Move over to a templated version so that I don't need to deal with creating the 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <style>
     :root {
-      --primary-bg: w3-card;
-      --secondary-bg: #0cr802021c;
+      --primary-bg: #080202;
+      --secondary-bg: #362c20bd;
       --accent: #ff9800;
       --button-bg: black;
       --button-text: white;
@@ -49,9 +49,6 @@ Move over to a templated version so that I don't need to deal with creating the 
       --text-alt: white;
       --border-main: white;
     }
-
-
-
 
     html,
     body,
@@ -68,6 +65,14 @@ Move over to a templated version so that I don't need to deal with creating the 
       font-size: 60px;
     }
 
+    body {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-alt);
+      background-color: var(--primary-bg);
+      margin: 0;
+      padding: 0;
+    }
 
     table,
     th,
@@ -93,9 +98,23 @@ Move over to a templated version so that I don't need to deal with creating the 
       text-align: center;
     }
 
+    #left-column {
+      /* Adjust height as needed */
+      height: 1000px;
+      overflow-y: auto;
+      margin-bottom: auto;
+      /* Enable vertical scrolling */
+    }
 
     #middle-column {
-      background-color: var(--primary-bg);
+      /* Adjust height as needed */
+      height: 1000px;
+      overflow-y: auto;
+      margin-bottom: auto;
+      /* Enable vertical scrolling */
+    }
+
+    #right-column {
       /* Adjust height as needed */
       height: 1000px;
       overflow-y: auto;
@@ -104,17 +123,16 @@ Move over to a templated version so that I don't need to deal with creating the 
     }
 
     .post-header {
-      height: 300px;
-      /*   background-color: #f1f1f1; */
 
+      background-color: var(--secondary-bg);
+      border: 5px solid var(--border-main);
       border-radius: 20px;
+      border-color: #e0e0e0;
       padding: 10px;
-      padding-bottom: 30px;
-
+      margin-bottom: 10px;
     }
 
     .post-container {
-
       overflow-y: auto;
       /* Enable vertical scrolling */
       font-size: 18px;
@@ -123,12 +141,84 @@ Move over to a templated version so that I don't need to deal with creating the 
       width: 100%
     }
 
-    .post-headline {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-      display: block;
+    .parent {
+      perspective: 800px;
     }
+
+    .rotate-y-animation {
+      animation: rotateY360 10s linear infinite;
+      transform-style: preserve-3d;
+    }
+
+    @keyframes rotateY360 {
+      from {
+        transform: rotateY(0deg);
+      }
+
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+
+
+    .lens-zoom {
+      transition: transform 0.3s cubic-bezier(.4, 2, .6, 1), box-shadow 0.3s;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+      cursor: zoom-in;
+    }
+
+    .lens-zoom:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 40px 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .fisheye {
+      transition: transform 0.4s cubic-bezier(.4, 2, .6, 1), filter 0.4s;
+      border-radius: 150%;
+      will-change: transform, filter;
+    }
+
+    .fisheye:hover {
+      transform: scale(1.3);
+      filter: contrast(1.2) brightness(1.1) saturate(1.2);
+    }
+
+
+
+
+    /* Add to your CSS */
+    .flip-card {
+      width: 150px;
+      height: 150px;
+      perspective: 800px;
+      display: inline-block;
+    }
+
+    .flip-card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotateY360 4s linear infinite;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      top: 0;
+      left: 0;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+
 
     .input-form {
       display: none;
@@ -137,16 +227,6 @@ Move over to a templated version so that I don't need to deal with creating the 
 
     .hidden {
       display: none;
-    }
-
-    .image-left {
-      float: left;
-      margin-right: 15px;
-    }
-
-    .image-right {
-      float: right;
-      margin-left: 15px;
     }
 
     .alert {
@@ -196,8 +276,8 @@ Move over to a templated version so that I don't need to deal with creating the 
       font-size: 16px;
       border: 1px solid #333;
       border-radius: 2px;
-      background: #f0f0f0;
-      color: #222;
+      background: var(--button-bg);
+      color: var(--button-text);
       cursor: pointer;
       transition: background 0.2s;
       text-align: center;
@@ -205,6 +285,14 @@ Move over to a templated version so that I don't need to deal with creating the 
 
     .button:hover {
       background: #e0e0e0;
+    }
+
+    .white-text {
+      color: var(--text-alt);
+    }
+
+    .black-text {
+      color: var(--text-main);
     }
 
     /* Style the content row: image left, text right */
@@ -223,12 +311,10 @@ Move over to a templated version so that I don't need to deal with creating the 
 
     /* Style the buttons row */
     .template-buttons {
-
       display: flex;
       justify-content: space-between;
       margin-top: 10px;
-      margin-right: 30px;
-
+      gap: 10px;
     }
 
 
@@ -252,7 +338,6 @@ Move over to a templated version so that I don't need to deal with creating the 
       align-items: center;
       justify-content: flex-start;
       width: 100%;
-      height: fit-content;
       padding: 10px;
       text-align: left;
       border: none;
@@ -275,10 +360,9 @@ Move over to a templated version so that I don't need to deal with creating the 
     }
 
     .sidebar-title {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 500;
     }
-
 
     /* Make the middle column full width and hide sidebars on small screens */
     @media (max-width: 800px) {
@@ -287,13 +371,6 @@ Move over to a templated version so that I don't need to deal with creating the 
         margin-right: auto !important;
         max-width: 100vw !important;
         box-sizing: border-box;
-      }
-
-      #middle-column {
-        margin-left: auto !important;
-        margin-right: auto !important;
-        float: none !important;
-        display: block !important;
       }
 
       .admin {
@@ -310,6 +387,15 @@ Move over to a templated version so that I don't need to deal with creating the 
 
 
       #middle-column {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        float: none !important;
+        display: block !important;
+      }
+
+
+
+      .w3-col.m7 {
         width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
@@ -337,23 +423,9 @@ Move over to a templated version so that I don't need to deal with creating the 
       }
 
       .post-image {
-        width: 80px !important;
+        width: 100px !important;
         height: auto !important;
       }
-    }
-
-    .reading-time {
-      position: absolute;
-      top: 10px;
-      right: 16px;
-      font-size: 0.5em;
-      color: #000000;
-      background: white;
-      padding: 2px 8px;
-      border-radius: 8px;
-      border: 1px solid black;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-      z-index: 2;
     }
   </style>
   <!--
@@ -379,8 +451,8 @@ Move over to a templated version so that I don't need to deal with creating the 
     var posts; // important to have this here to avoid errors
 
     const readOnly = false;
-     var defaultPost = 0; // Default post to show
-   // var defaultPost = "1746033081129"; // Default post to show
+    var defaultPost = 0; // Default post to show
+    // var defaultPost = "1746033081129"; // Default post to show
     const onePost = true; // Set to true to show only one post at a time
     var isAdmin;
 
@@ -435,7 +507,7 @@ Move over to a templated version so that I don't need to deal with creating the 
 
 </head>
 
-<body class="w3-theme-l5">
+<body>
 
   <div id="custom-alert" class="alert" onclick="document.getElementById('custom-alert').style.display='none'">
     <span id="alert-message"></span>
@@ -479,20 +551,41 @@ Move over to a templated version so that I don't need to deal with creating the 
         <br>
 
         <!-- Profile -->
-        <div class="w3-card w3-round w3-white">
-          <div class="w3-container">
-            <h4 id="version" class="w3-center">v1.14 - 15 may 2025</h4>
+        <div class="w3-card w3-round w3-margin" style="color:var(--text-color)">
+          <div>
+            <h4 class="w3-center">
+              <p id="version"></p>
+            </h4>
+            <p class="w3-center">
+            <div class="parent">
 
-            <p class="w3-center" onclick="scrollToPost();"
-              style="cursor:pointer; color:blue; text-decoration:underline;"
-              title="Click to scroll to the post with key 1746032695922">
+              <div class="w3-card w3-round  w3-center">
+                <img src="images/bikini.jpg" class="w3-circle lens-zoom" style="height:150px;width:150px"
+                  alt="Profile picture">
+              </div>
 
-              <img src="images/blogging.jpg" class="w3-circle" style="height:120px;width:120px" alt="blog image">
+
+
+              <!-- Add this inside your .parent container -->
+              <div class="flip-card">
+                <div class="flip-card-inner rotate-y-animation">
+                  <div class="flip-card-front">
+                    <img src="images/bikini.jpg" alt="Front" style="width:150px;height:150px;border-radius:50%;">
+                  </div>
+                  <div class="flip-card-back">
+                    <img src="images/gates.jpg" alt="Back" style="width:150px;height:150px;border-radius:50%;">
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
             </p>
             <hr>
-            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
+
             <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 2, 2025</p>
           </div>
         </div>
         <br>
@@ -509,25 +602,17 @@ Move over to a templated version so that I don't need to deal with creating the 
           <div class="w3-col m12" style="padding:0px;margin-left:0px;margin-right:0px; ">
             <div>
               <div>
-                <div style="text-align:center;display:none">
-                  <h1>BLOGGING FOR FUN</h1>
-                </div>
-                <div class="  w3-card W3-FloralWhite w3-round w3-margin" style="margin-bottom:10px;padding:0px">
+
+                <div class="w3-round w3-margin" style="margin-bottom:10px;padding:0px">
                   <br>
 
 
-                  <div class="  w3-sans-serif post-container">
-                    <div class="w3-card-4 post-header"
-                      style="width:100%;height:200px;margin-bottom:20px;border-radius: 5px;">
-                      <header class="w3-container w3-light-grey">
-                        <h3>Welcome</h3>
+                  <div class="post-container">
+                    <div class="post-header">
+                      <header>
+                        <img src="images/banner.png" alt="banner" class="w3-center"
+                          style="width:100%; border-radius: 20px;transform: scale(0.9)">
                       </header>
-                      <div class="w3-container">
-                        <img src="images/blogging.jpg" alt="blog image" class="w3-left w3-margin-right"
-                          style="width:150px;margin-bottom:10px">
-                        <h6>No one seems to blog for fun nowadays.</h6><br>
-                      </div>
-
                     </div>
                     <div class="content w3-justify" style="padding: 15px;display:none">
                       <p>It seems that the world has moved on to other things, like TikTok, Instagram, and other social
@@ -679,9 +764,9 @@ Move over to a templated version so that I don't need to deal with creating the 
 
       <!-- Right Column -->
       <div id="right-column" class="w3-col m3">
-        <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-card w3-round   w3-center">
           <div class="w3-container">
-            <div class="w3-card w3-round w3-white w3-center">
+            <div class="w3-card w3-round   w3-center">
               <div class="w3-container">
 
                 <!-- Add the Create New Post button -->
