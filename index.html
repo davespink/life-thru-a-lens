@@ -47,7 +47,7 @@ Move over to a templated version so that I don't need to deal with creating the 
       --sidebar-btn-hover: #e1e1e1;
       --text-main: black;
       --text-alt: white;
-      --border-main: white;
+      --border-main: rgba(255, 217, 0, 0.719);
     }
 
     html,
@@ -103,14 +103,19 @@ Move over to a templated version so that I don't need to deal with creating the 
       height: 1000px;
       overflow-y: auto;
       margin-bottom: auto;
-      /* Enable vertical scrolling */
+      border: outset 8px var(--border-main);
     }
+
+    /* Enable vertical scrolling */
+
 
     #middle-column {
       /* Adjust height as needed */
-      height: 1000px;
+      height: 600px;
       overflow-y: auto;
       margin-bottom: auto;
+    
+
       /* Enable vertical scrolling */
     }
 
@@ -120,6 +125,7 @@ Move over to a templated version so that I don't need to deal with creating the 
       overflow-y: auto;
       margin-bottom: auto;
       /* Enable vertical scrolling */
+      border: outset 8px var(--border-main);
     }
 
     .post-header {
@@ -130,6 +136,7 @@ Move over to a templated version so that I don't need to deal with creating the 
       border-color: #e0e0e0;
       padding: 10px;
       margin-bottom: 10px;
+   
     }
 
     .post-container {
@@ -169,7 +176,7 @@ Move over to a templated version so that I don't need to deal with creating the 
     }
 
     .lens-zoom:hover {
-      transform: scale(1.2);
+      transform: scale(1.5);
       box-shadow: 0 0 40px 10px rgba(0, 0, 0, 0.2);
     }
 
@@ -441,7 +448,7 @@ Move over to a templated version so that I don't need to deal with creating the 
 
 -->
 
-  <script src="blogging-1.4.js"></script>
+  <script src="blogging-1.4.1.js"></script>
 
 
 
@@ -451,9 +458,9 @@ Move over to a templated version so that I don't need to deal with creating the 
     var posts; // important to have this here to avoid errors
 
     const readOnly = false;
-    var defaultPost = 0; // Default post to show
+    var defaultPost = "0"; // Default post to show
     // var defaultPost = "1746033081129"; // Default post to show
-    const onePost = true; // Set to true to show only one post at a time
+   // const onePost = true; // Set to true to show only one post at a time
     var isAdmin;
 
     window.onload = async function () {
@@ -540,12 +547,7 @@ Move over to a templated version so that I don't need to deal with creating the 
                 <p><button onclick="uploadPosts()" class="w3-button w3-block w3-theme-d2">Upload Posts</button></p>
               </div>
             </div>
-
           </div>
-
-
-
-
 
         </div>
         <br>
@@ -560,14 +562,14 @@ Move over to a templated version so that I don't need to deal with creating the 
             <div class="parent">
 
               <div class="w3-card w3-round  w3-center">
-                <img src="images/bikini.jpg" class="w3-circle lens-zoom" style="height:150px;width:150px"
+                <img src="images/life.png" class="w3-circle lens-zoom" style="height:150px;width:150px"
                   alt="Profile picture">
               </div>
 
 
 
               <!-- Add this inside your .parent container -->
-              <div class="flip-card">
+              <div class="flip-card" style="display:none">
                 <div class="flip-card-inner rotate-y-animation">
                   <div class="flip-card-front">
                     <img src="images/bikini.jpg" alt="Front" style="width:150px;height:150px;border-radius:50%;">
@@ -590,10 +592,6 @@ Move over to a templated version so that I don't need to deal with creating the 
         </div>
         <br>
 
-
-
-
-
       </div>
 
       <!-- Middle Column -->
@@ -604,7 +602,7 @@ Move over to a templated version so that I don't need to deal with creating the 
               <div>
 
                 <div class="w3-round w3-margin" style="margin-bottom:10px;padding:0px">
-                  <br>
+               
 
 
                   <div class="post-container">
@@ -654,8 +652,6 @@ Move over to a templated version so that I don't need to deal with creating the 
                           <p>Post content goes here. This is where the full content of the post will be displayed.</p>
 
                         </div>
-
-
                     </template>
 
 
@@ -766,8 +762,8 @@ Move over to a templated version so that I don't need to deal with creating the 
       <div id="right-column" class="w3-col m3">
         <div class="w3-card w3-round   w3-center">
           <div class="w3-container">
-            <div class="w3-card w3-round   w3-center">
-              <div class="w3-container">
+            <div class="w3-round w3-center">
+              <div>
 
                 <!-- Add the Create New Post button -->
                 <button id="show-all-btn" class="w3-button w3-theme-d2 w3-margin-top w3-margin-bottom"
@@ -775,7 +771,7 @@ Move over to a templated version so that I don't need to deal with creating the 
                   Posts</button>
                 <button class="w3-button w3-theme-d2 w3-margin-bottom admin" onclick="setupPostForm(true)">Create New
                   Post</button>
-                <div id="side-menu" style="overflow:auto;height:400px"></div>
+                <div id="side-menu" style="overflow:auto;max-height:400px"></div>
               </div>
             </div>
             <p>That's all folks</p>
@@ -809,12 +805,12 @@ Move over to a templated version so that I don't need to deal with creating the 
     </p>
   </footer>
 
- 
+
   <script>
 
-      function isOdd(n) {
-        return n % 2 !== 0;
-      }
+    function isOdd(n) {
+      return n % 2 !== 0;
+    }
     // Attach click handlers after the DOM is ready
     document.addEventListener("DOMContentLoaded", function () {
       // Hashtag click: filter sidebar
@@ -832,29 +828,30 @@ Move over to a templated version so that I don't need to deal with creating the 
     });
 
 
-      const images = [ 'images/house.png','images/monkeys.png','images/kennel.jpg','images/bikini.jpg'];
-      let current = 0;
-      let halfTurn = false;
+    // Flip card animation
+    const images = ['images/house.png', 'images/monkeys.png', 'images/kennel.jpg', 'images/bikini.jpg'];
+    let current = 0;
+    let halfTurn = false;
 
-      const card = document.querySelector('.flip-card-inner');
-      card.addEventListener('animationiteration', () => {
-        // This fires every 4s (full rotation)
-        // Update the back face right after the front face is visible
-        setTimeout(() => {
-          const backImg = document.querySelector('.flip-card-back img');
-          const frontImg = document.querySelector('.flip-card-front img');
+    const card = document.querySelector('.flip-card-inner');
+    card.addEventListener('animationiteration', () => {
+      // This fires every 4s (full rotation)
+      // Update the back face right after the front face is visible
+      setTimeout(() => {
+        const backImg = document.querySelector('.flip-card-back img');
+        const frontImg = document.querySelector('.flip-card-front img');
 
- 
-          current = (current + 1) % images.length;
-          if (isOdd(current)) {
-            frontImg.src = images[current];
-          } else {
-            backImg.src = images[current];
-          }
-          
 
-        }, 1000); // 2000ms = half of 4s, so update at 180°
-      });
+        current = (current + 1) % images.length;
+        if (isOdd(current)) {
+          frontImg.src = images[current];
+        } else {
+          backImg.src = images[current];
+        }
+
+
+      }, 1000); // 2000ms = half of 4s, so update at 180°
+    });
 
 
 
