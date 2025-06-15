@@ -176,12 +176,17 @@ class LocalCrud {
                 if (post) posts.push(post);
             }
         }
-        return posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        return posts.sort((a, b) => a.seq - b.seq);
+
     }
 
     deleteAllPosts() {
         localStorage.clear();
-        alert("All posts have been deleted.");
+        if (isAdmin)
+            console.log("All posts have been deleted from localStorage.");
+        else
+
+             console.log("All posts have been deleted.");
 
 
     }
@@ -325,8 +330,8 @@ function renderSidebar() {
     const sidebar = document.getElementById("side-menu");
     sidebar.innerHTML = ""; // Clear existing sidebar content
     posts.forEach((post) => {
-       showOnePostSidebar(post);
-   });
+        showOnePostSidebar(post);
+    });
 
 }
 
@@ -379,6 +384,7 @@ function showOnePostSidebar(post) {
     const sidebarTemplate = document.getElementById("sidebar-item-template");
     const sidebarBtn = sidebarTemplate.content.cloneNode(true);
 
+    sidebarBtn.querySelector('button').setAttribute('data-key', post.key);
     // Fill in sidebar button fields
     const img = sidebarBtn.querySelector(".sidebar-img");
     img.src = post.image && post.image.startsWith('data:image/')
@@ -391,25 +397,9 @@ function showOnePostSidebar(post) {
 
     // Add click functionality
     sidebarBtn.querySelector("button").onclick = () => {
-
         return scrollToPost(post.key);
-
-
-        const targetPost = document.getElementById(post.key);
-        const middleColumn = document.querySelector("#middle-column");
-
-
-        if (targetPost && middleColumn) {
-
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            middleColumn.scrollTo({
-                top: targetPost.offsetTop - middleColumn.offsetTop,
-                behavior: "smooth",
-            });
-
-        }
-
     };
+
 
 
     sidebar.appendChild(sidebarBtn);
@@ -452,13 +442,13 @@ async function renderPosts() {
             return;
 
 
-        if(defaultPost=="0" || defaultPost == post.key) {
+        if (defaultPost == "0" || defaultPost == post.key) {
             showOnePost(post);
         }
 
     });
 
- 
+
     // Now show the sidebar
     renderSidebar(); // Render the sidebar with all posts
 
