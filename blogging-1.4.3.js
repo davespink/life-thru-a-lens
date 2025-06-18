@@ -1,5 +1,5 @@
 function getVersion() {
-    const version = "1.4.3 14 June 2025 "; return version;
+    const version = "1.4.4 18 June 2025 "; return version;
 }
 
 
@@ -186,7 +186,7 @@ class LocalCrud {
             console.log("All posts have been deleted from localStorage.");
         else
 
-             console.log("All posts have been deleted.");
+            console.log("All posts have been deleted.");
 
 
     }
@@ -783,17 +783,28 @@ function filterSidebarByHashtag(tag) {
 
     // Show only buttons whose text (headline) matches posts with the hashtag
     posts.forEach(post => {
+
+
         const content = [post.headline, post.teaser, post.content].join(' ');
         const hashtags = extractHashtags(content);
+        const postKey = post.key; // Use key  
         if (hashtags.includes(tag)) {
             // Find the sidebar button for this post (by headline text)
             document.querySelectorAll("#side-menu button").forEach(btn => {
-                if (btn.textContent.trim() === (post.headline || "Untitled Post")) {
+
+
+                //    if (btn.textContent.trim() === (post.headline || "Untitled Post")) {
+                //       btn.style.display = "flex";
+                //    }
+                if (btn.getAttribute('data-key') === postKey) {
                     btn.style.display = "flex";
+
                 }
             });
         }
     });
+
+
 }
 
 // To restore all sidebar buttons (show all)
